@@ -108,6 +108,16 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "chatrooms:build:production",
+            "firebaseProject": "get-chatrooms",
+            "firebaseHostingSite": "get-chatrooms"
+          }
         }
       }
     }

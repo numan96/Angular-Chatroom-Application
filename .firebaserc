@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "get-chatrooms": {
+      "hosting": {
+        "chatrooms": [
+          "get-chatrooms"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "get-chatrooms"
+  }
+}

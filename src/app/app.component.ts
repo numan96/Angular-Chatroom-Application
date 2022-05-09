@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from './features/auth/auth.service';
 
 @Component({
@@ -8,5 +9,11 @@ import { AuthService } from './features/auth/auth.service';
 })
 export class AppComponent {
   title = 'chatrooms';
-  constructor(public auth: AuthService) {}
+  constructor(public auth: AuthService, private _router: Router) {}
+
+  signOut() {
+    this.auth.signOut().subscribe({
+      next: () => this._router.navigate(['signin']),
+    });
+  }
 }

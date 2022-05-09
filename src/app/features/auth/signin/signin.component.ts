@@ -1,5 +1,7 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 
 @Component({
@@ -11,7 +13,11 @@ import { AuthService } from '../auth.service';
 export class SigninComponent implements OnInit {
   form!: FormGroup;
 
-  constructor(private auth: AuthService) {}
+  constructor(
+    private auth: AuthService,
+    private _router: Router,
+    private _snackbar: MatSnackBar
+  ) {}
 
   ngOnInit(): void {
     this.form = new FormGroup({
@@ -21,7 +27,10 @@ export class SigninComponent implements OnInit {
   }
 
   signIn() {
-    console.log('signin with: ', this.form);
-    this.auth.signIn(this.form.value);
+    this.auth.signIn(this.form.value).subscribe({
+      next: () => this._router.navigate(['chat']),
+      error: (error) =>
+        this._snackbar.open(error.message, 'Dismiss', { duration: 5000 }),
+    });
   }
 }
