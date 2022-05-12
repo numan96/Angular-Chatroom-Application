@@ -7,5 +7,6 @@ export const environment = {
     authDomain: 'get-chatrooms.firebaseapp.com',
     messagingSenderId: '1031236257119',
   },
-  production: true
+  production: true,
+  apiUrl: 'https://us-central1-get-chatrooms.cloudfunctions.net',
 };

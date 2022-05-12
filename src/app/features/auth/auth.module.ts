@@ -10,7 +10,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   imports: [
     CommonModule,
@@ -21,6 +21,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatDividerModule,
     RouterModule,
     MatSnackBarModule,
+    HttpClientModule,
   ],
   exports: [],
   declarations: [SigninComponent, SignupComponent, FormContainerComponent],
