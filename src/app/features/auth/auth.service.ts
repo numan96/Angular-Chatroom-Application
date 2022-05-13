@@ -13,6 +13,7 @@ import {
   from,
   Observable,
   of,
+  pluck,
   switchMap,
 } from 'rxjs';
 import { environment } from 'src/environments/environment';
@@ -25,6 +26,18 @@ export class AuthService {
   readonly isLoggedIn$ = authState(this._auth);
 
   constructor(private _auth: Auth, private _http: HttpClient) {}
+
+  getStreamToken() {
+    return this._http
+      .post<{ token: string }>(`${environment.apiUrl}/createStreamToken`, {
+        user: this.getCurrentUser(),
+      })
+      .pipe(pluck('token'));
+  }
+
+  getCurrentUser() {
+    return this._auth.currentUser!;
+  }
 
   signIn({ email, password }: SigninCredentials) {
     return from(signInWithEmailAndPassword(this._auth, email, password));

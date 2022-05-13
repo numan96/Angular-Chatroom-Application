@@ -13,6 +13,9 @@ export const environment = {
   },
   production: false,
   apiUrl: 'https://us-central1-get-chatrooms.cloudfunctions.net',
+  stream: {
+    key: '47mbymansa89',
+  },
 };
 
 /*

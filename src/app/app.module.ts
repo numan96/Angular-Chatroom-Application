@@ -11,7 +11,7 @@ import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { environment } from '../environments/environment';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { provideAuth, getAuth } from '@angular/fire/auth';
-
+import { TranslateModule } from '@ngx-translate/core';
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -24,6 +24,7 @@ import { provideAuth, getAuth } from '@angular/fire/auth';
     ChatModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
+    TranslateModule.forRoot(),
   ],
   providers: [
     {
