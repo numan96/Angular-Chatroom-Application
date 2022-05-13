@@ -1,15 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-new-channel',
   templateUrl: './new-channel.component.html',
-  styleUrls: ['./new-channel.component.scss']
+  styleUrls: ['./new-channel.component.scss'],
 })
-export class NewChannelComponent implements OnInit {
+export class NewChannelComponent {
+  @Output() saved = new EventEmitter<string>();
 
-  constructor() { }
+  channelName = new FormControl();
 
-  ngOnInit() {
+  onCreate() {
+    this.saved.emit(this.channelName.value);
+    this.channelName.reset('');
   }
-
 }

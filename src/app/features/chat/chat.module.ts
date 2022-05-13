@@ -7,6 +7,7 @@ import {
   StreamChatModule,
   StreamAutocompleteTextareaModule,
 } from 'stream-chat-angular';
+import { ChannelsModule } from '../channels/channels.module';
 @NgModule({
   imports: [
     CommonModule,
@@ -14,6 +15,7 @@ import {
     TranslateModule.forChild(),
     StreamChatModule,
     StreamAutocompleteTextareaModule,
+    ChannelsModule,
   ],
   exports: [],
   declarations: [ChatPageComponent],

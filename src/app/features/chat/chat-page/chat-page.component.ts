@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { from, Observable, of } from 'rxjs';
 import { catchError, map, switchMap } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import {
@@ -44,5 +44,20 @@ export class ChatPageComponent implements OnInit {
       map(() => true),
       catchError(() => of(false))
     );
+  }
+
+  onCreate(name: string) {
+    const dashName = name.replace(/\s+/g, '-').toLowerCase();
+    const channel = this._chatService.chatClient.channel(
+      'messaging',
+      dashName,
+      {
+        // add as many custom fields as you'd like
+
+        name: name,
+        members: [this._auth.getCurrentUser().uid],
+      }
+    );
+    from(channel.create());
   }
 }
