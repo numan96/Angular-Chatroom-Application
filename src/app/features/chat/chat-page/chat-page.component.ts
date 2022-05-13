@@ -71,8 +71,6 @@ export class ChatPageComponent implements OnInit, AfterViewInit {
       'messaging',
       dashName,
       {
-        // add as many custom fields as you'd like
-
         name: name,
         members: [this._auth.getCurrentUser().uid],
       }
