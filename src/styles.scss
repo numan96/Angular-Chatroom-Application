@@ -11,3 +11,11 @@ body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
+
+a {
+  text-decoration: none
+}
+
+.str-chat {
+  height: calc(100vh - 183px);
+}

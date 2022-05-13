@@ -59,6 +59,11 @@ export class AuthService {
   }
 
   signOut() {
-    return from(this._auth.signOut());
+    const user = this._auth.currentUser;
+    return from(this._auth.signOut()).pipe(
+      switchMap(() =>
+        this._http.post(`${environment.apiUrl}/revokeStreamUserToken`, { user })
+      )
+    );
   }
 }
