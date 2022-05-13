@@ -1,3 +1,22 @@
-<p>
-  invite-button works!
-</p>
+<button mat-stroked-button (click)="showDialog = true">Add users</button>
+<stream-modal [(isOpen)]="showDialog">
+  <mat-form-field class="form-field"
+    ><input
+      type="text"
+      matInput
+      placeholder="Start to Type"
+      [formControl]="userSearchField"
+      [matAutocomplete]="auto"
+    />
+  </mat-form-field>
+
+  <mat-autocomplete
+    (optionSelected)="addToChat($event)"
+    #auto="matAutocomplete"
+    autoActiveFirstOption
+  >
+    <mat-option *ngFor="let user of availableUsers$ | async" [value]="user.id">
+      {{ user.name }}
+    </mat-option>
+  </mat-autocomplete>
+</stream-modal>
